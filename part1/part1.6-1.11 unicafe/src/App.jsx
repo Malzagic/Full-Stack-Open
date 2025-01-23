@@ -9,15 +9,19 @@ const Statistic = ({ text, good, neutral, bad, total, avarage, positive }) => {
   return (
     <>
       <h2>{text}</h2>
-      <ul>
-        <li>good {good}</li>
-        <li>neutral {neutral}</li>
-        <li>bad {bad}</li>
-        {/* Version from part 1.7 Step 2 */}
-        <li>all {total}</li>
-        <li>avarage {avarage}</li>
-        <li>positive {positive} %</li>
-      </ul>
+      {total > 0 ? (
+        <ul>
+          <li>good {good}</li>
+          <li>neutral {neutral}</li>
+          <li>bad {bad}</li>
+          {/* Version from part 1.7 Step 2 */}
+          <li>all {total}</li>
+          <li>avarage {avarage}</li>
+          <li>positive {positive} %</li>
+        </ul>
+      ) : (
+        <p>No feedback given</p>
+      )}
     </>
   );
 };
