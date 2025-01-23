@@ -4,6 +4,7 @@ const Header = ({ text }) => {
   return <h1>{text}</h1>;
 };
 
+// Its from step 3 but I am using it from the beginning
 const Statistic = ({ text, good, neutral, bad, total, avarage, positive }) => {
   return (
     <>
@@ -43,6 +44,7 @@ const App = () => {
       <Button text="good" onClick={() => setGood(good + 1)} />
       <Button text="neutral" onClick={() => setNeutral(neutral + 1)} />
       <Button text="bad" onClick={() => setBad(bad + 1)} />
+      {/* Its from step 3 but I am using it from the beginning */}
       <Statistic
         text="Statistics"
         good={good}
