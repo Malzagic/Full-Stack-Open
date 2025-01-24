@@ -3,6 +3,7 @@
 // import App from "./App";
 
 // ReactDOM.render(<App />, document.getElementById("root"));
+
 // After React18
 import { createRoot } from "react-dom/client";
 import App from "./App";
