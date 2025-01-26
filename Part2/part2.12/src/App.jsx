@@ -8,7 +8,7 @@ const App = () => {
   const [persons, setPersons] = useState([]);
   const [newName, setNewName] = useState("");
   const [newNumber, setNewNumber] = useState("");
-  const [filteredPerson, setFilteredPerson] = useState([]);
+  const [filter, setFilter] = useState("");
 
   useEffect(() => {
     axios.get("http://localhost:3001/persons").then((response) => {
@@ -48,22 +48,14 @@ const App = () => {
       });
   };
 
-  const filterByNameHandler = (e) => {
-    if (e.target.value === "") {
-      setFilteredPerson([]);
-      return;
-    }
-    const filter = persons.filter((person) =>
-      person.name.toLowerCase().includes(e.target.value.toLowerCase())
-    );
-
-    setFilteredPerson(filter);
-  };
+  const filteredList = persons.filter((person) =>
+    person.name.toLowerCase().includes(filter.toLowerCase())
+  );
 
   return (
     <div>
       <h2>Phonebook</h2>
-      <SearchBar onChange={filterByNameHandler} />
+      <SearchBar onChange={(e) => setFilter(e.target.value)} />
       <h3>add a new</h3>
       <Form
         onChangeName={inputNameHandler}
@@ -73,7 +65,7 @@ const App = () => {
         newNumber={newNumber}
       />
       <h3>Numbers</h3>
-      <PersonsList filteredList={filteredPerson} />
+      <PersonsList filteredList={filteredList} />
     </div>
   );
 };
